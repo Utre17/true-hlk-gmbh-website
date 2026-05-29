@@ -11,6 +11,7 @@ Thumbs.db
 # Keep private/source material out of the public repository by default.
 Assets/*
 !Assets/true-hlk-logo-cropped.png
+!Assets/true-hlk-logo-full-header.png
 !Assets/true-hlk-logo-header-green.png
 !Assets/true-hlk-logo-transparent.png
 !Assets/True HLK Icons/
