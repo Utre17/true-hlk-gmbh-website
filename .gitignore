@@ -1,0 +1,47 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+
+# Keep private/source material out of the public repository by default.
+Assets/*
+!Assets/true-hlk-logo-cropped.png
+!Assets/true-hlk-logo-header-green.png
+!Assets/True HLK Icons/
+Assets/True HLK Icons/*
+!Assets/True HLK Icons/clipboard-check.png
+!Assets/True HLK Icons/fan.png
+!Assets/True HLK Icons/heat-pump.png
+!Assets/True HLK Icons/house.png
+!Assets/True HLK Icons/lightning-bolt.png
+!Assets/True HLK Icons/quality-badge.png
+!Assets/True HLK Icons/radiator.png
+!Assets/True HLK Icons/service-24-7.png
+!Assets/True HLK Icons/shield-check.png
+!Assets/True HLK Icons/thermometer.png
+!Assets/True HLK Icons/tools-wrench-screwdriver.png
+!Assets/True HLK Icons/water-cycle.png
+!Assets/True HLK Icons/water-drop.png
+!Assets/website-optimized/
+Assets/website-optimized/*
+!Assets/website-optimized/contact-apichan-portrait.jpg
+!Assets/website-optimized/gallery-pipe-detail.jpg
+!Assets/website-optimized/gallery-plant-room.jpg
+!Assets/website-optimized/gebaeudetechnik-hero-pipes.jpg
+!Assets/website-optimized/heating-hero-heatpump.jpg
+!Assets/website-optimized/instandhaltung-maintenance-lab.jpg
+!Assets/website-optimized/trade-elektro-panel.jpg
+!Assets/website-optimized/trade-lueftung-ducts.jpg
+!Assets/website-optimized/trade-sanitaer-bathroom.jpg
+!Assets/true_hlk_selected_website_assets/
+Assets/true_hlk_selected_website_assets/*
+!Assets/true_hlk_selected_website_assets/02_project_exterior_heatpump_house_garden.jpg
+!Assets/true_hlk_selected_website_assets/06_service_detail_orange_boiler_room.jpg
+!Assets/true_hlk_selected_website_assets/07_about_contact_person_apichan.jpg
+!Assets/true_hlk_selected_website_assets/10_secondary_interior_pipe_detail.jpg
+!Assets/true_hlk_selected_website_assets/11_secondary_pipe_system_installation.jpg
