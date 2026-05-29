@@ -20,6 +20,7 @@
   --container: min(100% - 56px, 1420px);
   --ease: cubic-bezier(0.32, 0.72, 0, 1);
   --radius: 8px;
+  color-scheme: only light;
 }
 
 *,
@@ -31,6 +32,8 @@
 html {
   min-width: 320px;
   overflow-x: hidden;
+  background: var(--bg);
+  color-scheme: only light;
   scroll-behavior: smooth;
 }
 
@@ -38,6 +41,7 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
+  color-scheme: only light;
   background:
     linear-gradient(90deg, rgba(20, 92, 58, 0.025) 1px, transparent 1px) 0 0 / 96px 96px,
     var(--bg);
@@ -125,6 +129,7 @@ button {
   border-bottom: 1px solid var(--line);
   background: rgba(251, 250, 246, 0.94);
   backdrop-filter: blur(16px);
+  color-scheme: only light;
 }
 
 .header-inner {
@@ -146,6 +151,7 @@ button {
 .brand img {
   width: 210px;
   height: auto;
+  forced-color-adjust: none;
 }
 
 .desktop-nav {

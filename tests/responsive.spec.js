@@ -246,4 +246,40 @@ test.describe("responsive static site audit", () => {
     expect(metrics.hiddenReveals).toBe(0);
     expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.innerWidth + 1);
   });
+
+  test("dark browser preference keeps the light brand theme", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.setViewportSize({ width: 390, height: 900 });
+    await page.goto(`${baseUrl}/index.html`, { waitUntil: "networkidle" });
+
+    const metrics = await page.evaluate(() => {
+      const header = document.querySelector(".site-header");
+      const brand = document.querySelector(".brand img");
+      const htmlStyle = getComputedStyle(document.documentElement);
+      const bodyStyle = getComputedStyle(document.body);
+      const headerStyle = getComputedStyle(header);
+      const logoRect = brand.getBoundingClientRect();
+
+      return {
+        prefersDark: matchMedia("(prefers-color-scheme: dark)").matches,
+        htmlColorScheme: htmlStyle.colorScheme,
+        bodyColorScheme: bodyStyle.colorScheme,
+        htmlBackground: htmlStyle.backgroundColor,
+        bodyBackground: bodyStyle.backgroundColor,
+        headerBackground: headerStyle.backgroundColor,
+        logoWidth: logoRect.width,
+        scrollWidth: document.documentElement.scrollWidth,
+        innerWidth: window.innerWidth,
+      };
+    });
+
+    expect(metrics.prefersDark).toBe(true);
+    expect(metrics.htmlColorScheme).toContain("light");
+    expect(metrics.bodyColorScheme).toContain("light");
+    expect(metrics.htmlBackground).toBe("rgb(251, 250, 246)");
+    expect(metrics.bodyBackground).toBe("rgb(251, 250, 246)");
+    expect(metrics.headerBackground).toBe("rgba(251, 250, 246, 0.94)");
+    expect(metrics.logoWidth).toBeGreaterThan(150);
+    expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.innerWidth + 1);
+  });
 });
