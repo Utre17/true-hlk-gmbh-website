@@ -45,6 +45,23 @@ function clearStagedElements(elements) {
   });
 }
 
+function startAfterPaint(callback, delay = 0) {
+  const run = () => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.setTimeout(callback, delay);
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run, { once: true });
+    return;
+  }
+
+  run();
+}
+
 function initHeaderEntry() {
   if (isReducedMotion) return;
 
@@ -61,13 +78,13 @@ function initHeaderEntry() {
 
   stageElements(pieces, { y: -10 });
 
-  requestAnimationFrame(() => {
+  startAfterPaint(() => {
     animate(
       pieces,
       { opacity: [0, 1], y: [-10, 0] },
-      { duration: 0.62, delay: stagger(0.035, { startDelay: 0.08 }), ease: smoothEase }
+      { duration: 0.72, delay: stagger(0.045, { startDelay: 0.06 }), ease: smoothEase }
     ).finished.finally(() => clearStagedElements(pieces));
-  });
+  }, 80);
 }
 
 function initScrollProgress() {
@@ -114,30 +131,32 @@ function initPageEntry() {
   if (media) media.classList.add("is-visible");
 
   if (copyPieces.length) {
-    requestAnimationFrame(() => {
+    startAfterPaint(() => {
       animate(
         copyPieces,
-        { opacity: [0, 1], y: [34, 0], filter: ["blur(8px)", "blur(0px)"] },
-        { duration: 0.95, delay: stagger(0.07, { startDelay: 0.12 }), ease: smoothEase }
+        { opacity: [0, 1], y: [40, 0], filter: ["blur(8px)", "blur(0px)"] },
+        { duration: 1.12, delay: stagger(0.095, { startDelay: 0.16 }), ease: smoothEase }
       ).finished.finally(() => clearStagedElements(copyPieces));
-    });
+    }, 140);
   }
 
   if (media) {
-    requestAnimationFrame(() => {
+    startAfterPaint(() => {
       animate(
         media,
-        { opacity: [0, 1], x: [44, 0], scale: [0.985, 1] },
-        { duration: 1.08, delay: 0.18, ease: smoothEase }
+        { opacity: [0, 1], x: [54, 0], scale: [0.975, 1] },
+        { duration: 1.24, delay: 0.28, ease: smoothEase }
       ).finished.finally(() => clearStagedElements([media]));
-    });
+    }, 140);
 
     const image = qs("img", media);
     if (image) {
       image.style.willChange = "transform";
-      animate(image, { scale: [1.07, 1] }, { duration: 1.42, delay: 0.1, ease: smoothEase }).finished.finally(() => {
-        image.style.willChange = "";
-      });
+      startAfterPaint(() => {
+        animate(image, { scale: [1.085, 1] }, { duration: 1.72, delay: 0.18, ease: smoothEase }).finished.finally(() => {
+          image.style.willChange = "";
+        });
+      }, 140);
     }
   }
 }
