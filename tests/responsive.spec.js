@@ -267,6 +267,7 @@ test.describe("responsive static site audit", () => {
         htmlBackground: htmlStyle.backgroundColor,
         bodyBackground: bodyStyle.backgroundColor,
         headerBackground: headerStyle.backgroundColor,
+        logoSrc: brand.currentSrc,
         logoWidth: logoRect.width,
         scrollWidth: document.documentElement.scrollWidth,
         innerWidth: window.innerWidth,
@@ -278,7 +279,8 @@ test.describe("responsive static site audit", () => {
     expect(metrics.bodyColorScheme).toContain("light");
     expect(metrics.htmlBackground).toBe("rgb(251, 250, 246)");
     expect(metrics.bodyBackground).toBe("rgb(251, 250, 246)");
-    expect(metrics.headerBackground).toBe("rgba(251, 250, 246, 0.94)");
+    expect(metrics.headerBackground).toBe("rgba(17, 23, 19, 0.97)");
+    expect(metrics.logoSrc).toContain("true-hlk-logo-transparent");
     expect(metrics.logoWidth).toBeGreaterThan(150);
     expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.innerWidth + 1);
   });
